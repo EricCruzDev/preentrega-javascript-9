@@ -67,27 +67,35 @@ const mensaje = document.querySelector("#mensaje");
 formularioProducto.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const nombre = nombreInput.value.trim();
-    const precio = Number(precioInput.value);
-    const categoria = categoriaInput.value.trim();
-    const stock = Number(stockInput.value);
+    try {
+        const nombre = nombreInput.value.trim();
+        const precio = Number(precioInput.value);
+        const categoria = categoriaInput.value.trim();
+        const stock = Number(stockInput.value);
 
-    const esValido = (nombre && categoria && !isNaN(precio) && !isNaN(stock)) ? true : false;
+        if (!nombre || !categoria || isNaN(precio) || isNaN(stock) || precio <= 0 || stock < 0) {
+            throw new Error("No se pudo procesar la operación, intentá de nuevo con datos válidos.");
+        }
 
-    if (!esValido) {
-        mensaje.textContent = "Por favor, completa todos los campos correctamente.";
-        return;
+        const nuevoProducto = new Producto(nombre, precio, categoria, stock);
+
+        productos.push(nuevoProducto);
+        guardarStorage();
+        mostrarProductos(productos);
+
+        mensaje.textContent = "✔️ Producto agregado correctamente.";
+        mensaje.style.color = "#2e7d32";
+
+    } catch (error) {
+        // Captura y muestra el mensaje de error definido en el throw
+        mensaje.textContent = `⚠️ ${error.message}`;
+        mensaje.style.color = "#d32f2f";
+
+    } finally {
+        // Se ejecuta SIEMPRE al terminar el bloque, haya o no error
+        formularioProducto.reset();
+        console.log("Se ejecutó el bloque finally: Formulario reseteado.");
     }
-
-    const nuevoProducto = new Producto(nombre, precio, categoria, stock);
-
-    productos.push(nuevoProducto);
-
-    guardarStorage();
-
-    mostrarProductos(productos);
-    mensaje.textContent = "Producto agregado correctamente.";
-    formularioProducto.reset();
 });
 
 function eliminarProducto(nombreEliminar) {
