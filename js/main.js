@@ -45,6 +45,16 @@ function mostrarProductos(lista) {
 
 mostrarProductos(productos);
 
+const bannerNotificacion = document.querySelector("#bannerNotificacion");
+const textoNotificacion = document.querySelector("#textoNotificacion");
+
+setTimeout(() => {
+    if (bannerNotificacion && textoNotificacion) {
+        textoNotificacion.textContent = "🔔 Cotización del dólar hoy: $1.200 | Recordatorio: Aprovechá 10% OFF pagando en efectivo.";
+        bannerNotificacion.className = "notificacion-visible";
+    }
+}, 3000);
+
 const formularioProducto = document.querySelector("#formularioProducto");
 
 const nombreInput = document.querySelector("#nombre");
