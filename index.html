@@ -9,73 +9,72 @@
     <title>Pre entrega js nueve</title>
 </head>
 
+
 <body>
 
-    <body>
+    <header>
+        <h1>Simulador de Productos</h1>
+        <p>Gestioná tus productos de forma dinámica</p>
+    </header>
 
-        <header>
-            <h1>Simulador de Productos</h1>
-            <p>Gestioná tus productos de forma dinámica</p>
-        </header>
+    <main>
 
-        <main>
+        <section id="bannerNotificacion" class="notificacion-oculta">
+            <p id="textoNotificacion"></p>
+        </section>
 
-            <section id="bannerNotificacion" class="notificacion-oculta">
-                <p id="textoNotificacion"></p>
-            </section>
+        <section class="formulario">
+            <h2>Agregar producto</h2>
 
-            <section class="formulario">
-                <h2>Agregar producto</h2>
+            <form id="formularioProducto">
 
-                <form id="formularioProducto">
+                <div class="campo">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" required>
+                </div>
 
-                    <div class="campo">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" required>
-                    </div>
+                <div class="campo">
+                    <label for="precio">Precio</label>
+                    <input type="number" id="precio" required>
+                </div>
 
-                    <div class="campo">
-                        <label for="precio">Precio</label>
-                        <input type="number" id="precio" required>
-                    </div>
+                <div class="campo">
+                    <label for="categoria">Categoría</label>
+                    <input type="text" id="categoria" required>
+                </div>
 
-                    <div class="campo">
-                        <label for="categoria">Categoría</label>
-                        <input type="text" id="categoria" required>
-                    </div>
+                <div class="campo">
+                    <label for="stock">Stock</label>
+                    <input type="number" id="stock" required>
+                </div>
 
-                    <div class="campo">
-                        <label for="stock">Stock</label>
-                        <input type="number" id="stock" required>
-                    </div>
+                <button type="submit">Agregar producto</button>
 
-                    <button type="submit">Agregar producto</button>
+            </form>
+        </section>
 
-                </form>
-            </section>
+        <section class="busqueda">
+            <h2>Buscar producto</h2>
 
-            <section class="busqueda">
-                <h2>Buscar producto</h2>
+            <input type="text" id="buscador" placeholder="Escribí el nombre del producto">
+        </section>
 
-                <input type="text" id="buscador" placeholder="Escribí el nombre del producto">
-            </section>
+        <section class="productos">
+            <h2>Productos</h2>
 
-            <section class="productos">
-                <h2>Productos</h2>
+            <div id="listaProductos" class="lista-productos"></div>
+        </section>
 
-                <div id="listaProductos" class="lista-productos"></div>
-            </section>
+        <section class="feedback">
+            <p id="mensaje"></p>
+        </section>
 
-            <section class="feedback">
-                <p id="mensaje"></p>
-            </section>
+    </main>
 
-        </main>
+    <footer>
+        <p>Pre-entrega 9 - JavaScript</p>
+    </footer>
 
-        <footer>
-            <p>Pre-entrega 9 - JavaScript</p>
-        </footer>
-
-    </body>
+</body>
 
 </html>
